@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import CoreData
 
-
 class AdRequest: UIViewController {
     
     var adRequestContainer: NSPersistentContainer!

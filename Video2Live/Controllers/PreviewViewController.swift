@@ -12,6 +12,7 @@ import AVKit
 import Photos
 import PhotosUI
 import MobileCoreServices
+import GoogleMobileAds
 
 class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
     
@@ -36,24 +37,13 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
     //typealias livePhotoResources = (pairedImage: URL, pairedVideo: URL)
     var resourceStore: Any?
     
-    
-    var completion: Bool?
-    
-    
-    //MARK: Unused Variables
-    //It seems I'm not using any of these variables
-    
-    var stillImage: UIImage?
-    
-    var assetWriterURL: URL?
-    
-    var thumbnailImageURL: URL?
-    var thumbnailFinalImageURL: URL?
-    
-    var imageIDProcess: Bool?
-    
     var videoURL: URL?
     
+    //pretty sure this is unused
+    //var completion: Bool?
+    
+    //Google Interstitial Ad
+    var interstitialAd: GADInterstitial!
     
     //MARK: Initial viewDidLoad
     
@@ -84,6 +74,14 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
         livePhotoView.contentMode = UIView.ContentMode.scaleAspectFit
         livePhotoView.delegate = self
         livePhotoView(livePhotoView, willBeginPlaybackWith: .hint)
+        
+        
+//        interstitialAd = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+//        let request = GADRequest()
+//        interstitialAd.load(request)
+        
+        interstitialAd = createAndLoadInterstitial()
+        
     }
     
     
@@ -99,6 +97,27 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
     }
     
     
+    func loadInterstitial(completion: (Bool)->Void){
+        if interstitialAd.isReady {
+          interstitialAd.present(fromRootViewController: self)
+        } else {
+          print("Ad wasn't ready")
+        }
+        completion(true)
+    }
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-1890050047502812/3288610105")
+        interstitial.delegate = self as? GADInterstitialDelegate
+        interstitial.load(GADRequest())
+        return interstitial
+    }
+    
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+      interstitialAd = createAndLoadInterstitial()
+    }
+    
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var progressView: UIProgressView!
@@ -111,7 +130,18 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
     
     @IBAction func saveButton(_ sender: UIButton) {
         
-        saveAsLive(1)
+        loadInterstitial { (success) in
+            if success && interstitialAd.isReady {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+                    self.saveAsLive(1)
+                }
+            } else if success {
+                self.saveAsLive(1)
+            }
+        }
+        
+        
+        //saveAsLive(1)
         //To determine whether alert should should. I intend to use the live photo generated to preview as live photo. I would probably also need a progres bar for this process.
 
     }
@@ -156,12 +186,14 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
                                 }
                                 
                                 //show alert
-                                let alertController = UIAlertController(title: "Live Photo Saved", message: "The live photo was successfully saved to Photos.", preferredStyle: .alert)
-                                    alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
+                                let alertController = UIAlertController(title: "Live Photo Saved!", message: "The live photo was successfully saved to Photos.", preferredStyle: .alert)
+                                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
                                     self.saveButton.isEnabled = false
                                     self.navigationController?.popViewController(animated: true)
-                                })
-                                )
+                                }))
+//                                alertController.addAction(UIAlertAction(title: "Open Photos", style: .cancel, handler: { (UIAlertAction) in
+//                                        UIApplication.shared.open(URL(string:"photos-redirect://")!)
+//                                }))
                                 alertController.show()
                             }
                             print("success")
