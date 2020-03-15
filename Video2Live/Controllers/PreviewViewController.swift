@@ -50,7 +50,9 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        saveButton.frame = CGRect(x: (screenSize.width/2)-(184/2), y: (screenSize.height*0.86), width: 184, height: 37)
+        saveButton.frame = CGRect(x: (screenSize.width/2)-(90/2), y: (screenSize.height*0.86), width: 90, height: 37)
+        saveButton.backgroundColor = UIColor.systemTeal
+        saveButton.layer.cornerRadius = 18
         activityIndicator.frame = CGRect(x: (screenSize.width/2)-(150/2), y: (screenSize.height/2), width: 150, height: 3)
         livePhotoView.frame = CGRect(x: (screenSize.width/2)-(343/2), y: (screenSize.height*0.108), width: (screenSize.width*0.91), height: (screenSize.height*0.68))
         progressView.frame = CGRect(x: (screenSize.width/2)-(125/2), y: (screenSize.height*0.93), width: 125, height: 2.5)
@@ -132,9 +134,7 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
         
         loadInterstitial { (success) in
             if success && interstitialAd.isReady {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
-                    self.saveAsLive(1)
-                }
+                    self.saveAsLive(2)
             } else if success {
                 self.saveAsLive(1)
             }
@@ -210,7 +210,45 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
             
             //navigationController?.popViewController(animated: true)
             
-        }
+        } else if choice == 2{
+                    LivePhoto.saveToLibrary(resourceStore as! LivePhoto.LivePhotoResources, completion: { (success) in
+                                if success {
+                                    DispatchQueue.main.async {
+                                        self.saveButton.isEnabled = true
+                                        
+                                        if #available(iOS 13.0, *) {
+                                            self.activityIndicator.stopAnimating()
+                                            self.activityIndicator.isHidden = true
+                                        }
+                                        
+                                        //show alert
+                                        let alertController = UIAlertController(title: "Live Photo Saved!", message: "The live photo was successfully saved to Photos.", preferredStyle: .alert)
+                                        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
+                                            self.saveButton.isEnabled = false
+                                            self.navigationController?.popViewController(animated: true)
+                                        }))
+        //                                alertController.addAction(UIAlertAction(title: "Open Photos", style: .cancel, handler: { (UIAlertAction) in
+        //                                        UIApplication.shared.open(URL(string:"photos-redirect://")!)
+        //                                }))
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+                                            alertController.show()
+                                        }
+                                    }
+                                    print("success")
+                                }
+                                else {
+                                    DispatchQueue.main.async {
+                                        self.alert(alertTitle: "Live Photo Not Saved", AlertMessage:"The live photo was not saved to Photos.")
+                                    }
+                                    print("fail")
+                                }
+                            })
+                    //popback to main VC
+                    livePhotoViewStop(livePhotoView)
+                    
+                    //navigationController?.popViewController(animated: true)
+                    
+                }
         else{
             LivePhoto.generate(from: photoURL, videoURL: sourceVideoPath, progress: { (percent) in
                 DispatchQueue.main.async {

@@ -31,12 +31,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     var permissionStatus: Int = 0
     
+    var secretCount = 0
+    
+//    let circle = UIView()
+
+//    let gradientBG = CAGradientLayer()
+    
     @IBOutlet weak var liveConvertHiddenButton: UIButton!
     
     @IBAction func liveConvertHiddenButton(_ sender: Any) {
-        let alertController = UIAlertController(title: "You've Found The Hidden Button", message: "Stick around and you'll find a pleasant surprise in an update coming soon😉", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            alertController.show()
+        
+        setGradientBackground(colorTop: UIColor.darkGray.cgColor, colorBottom: UIColor(red: 0.27, green: 0.44, blue: 0.65, alpha: 1).cgColor)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if self.secretCount == 0 {
+                self.secretCount = 1
+                let alertController = UIAlertController(title: "You've Found The Hidden Button", message: "Stick around and you'll find a pleasant surprise in an update coming soon😉", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                alertController.show()
+            }else {
+                let alertController = UIAlertController(title: "Chill", message: "It's not gonna come quicker if you keep clicking", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                alertController.show()
+            }
+        }
+        
     }
     
     
@@ -67,7 +86,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(actionSheet, animated: true, completion: nil)
     }
     
-    
+    func setGradientBackground(colorTop: CGColor, colorBottom: CGColor) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.4)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        view.layer.insertSublayer(gradientLayer, at: 0)
+    }
     
     @IBOutlet weak var infoButton: UIButton!
     
@@ -80,12 +106,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         liveConvertHiddenButton.setTitleColor(UIColor.red, for: .highlighted)
         
         convertButton.frame = CGRect(x: ((screenSize.width/2)-(180/2)), y: (screenSize.height*0.58), width: 180, height: 54)
+        //convertButton.setTitleColor(UIColor.white, for: .normal)
         convertButton.setTitleColor(UIColor.systemOrange, for: .highlighted)
         convertButton.backgroundColor = UIColor.systemOrange
         convertButton.layer.cornerRadius = 25
         
-        infoButton.frame = CGRect(x: ((screenSize.width/2)-(177/2)), y: (screenSize.height*0.80), width: 177, height: 33)
+        infoButton.frame = CGRect(x: ((screenSize.width/2)-(195/2)), y: (screenSize.height*0.80), width: 195, height: 33)
+        infoButton.backgroundColor = UIColor.systemTeal
         infoButton.setTitleColor(UIColor.systemOrange, for: .highlighted)
+        infoButton.layer.cornerRadius = 15
         
         imagePicker.delegate = self
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .savedPhotosAlbum)!
@@ -93,6 +122,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.videoQuality = .typeHigh
         imagePicker.videoExportPreset = AVAssetExportPresetPassthrough
         imagePicker.allowsEditing = true
+        
+//        circle.frame = CGRect(x: convertButton.center.x, y: convertButton.center.y, width: 100, height: 100)
+//        circle.layer.cornerRadius = circle.frame.size.height / 2
+//        circle.backgroundColor = convertButton.backgroundColor
+        
+        //setGradientBackground(colorTop: UIColor.darkGray.cgColor, colorBottom: UIColor(red: 0.27, green: 0.44, blue: 0.65, alpha: 1).cgColor)
         
         
         //Show view controller for terms and conditions. Modify permission to be called as a completion
@@ -234,6 +269,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
     }
     
     

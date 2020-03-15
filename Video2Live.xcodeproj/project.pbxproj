@@ -21,6 +21,8 @@
 		ED8F4241239D4499000744F7 /* Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F4240239D4499000744F7 /* Extra.swift */; };
 		ED8F4245239D5DA4000744F7 /* AVAsset-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F4244239D5DA4000744F7 /* AVAsset-extensions.swift */; };
 		EDAB4C0323D8F6C800BD7B54 /* InfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAB4C0223D8F6C800BD7B54 /* InfoCollectionViewCell.swift */; };
+		EDB932FB241CE1CF00CDCB55 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB932FA241CE1CF00CDCB55 /* Transition.swift */; };
+		EDB932FD241CF75200CDCB55 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB932FC241CF75200CDCB55 /* Gradient.swift */; };
 		EDCAD909230F24940003278E /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCAD908230F24940003278E /* PreviewViewController.swift */; };
 		EDF45D9023849D6D0080989C /* SharedIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF45D8F23849D6D0080989C /* SharedIdentifier.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +58,8 @@
 		ED8F4240239D4499000744F7 /* Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extra.swift; sourceTree = "<group>"; };
 		ED8F4244239D5DA4000744F7 /* AVAsset-extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAsset-extensions.swift"; sourceTree = "<group>"; };
 		EDAB4C0223D8F6C800BD7B54 /* InfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		EDB932FA241CE1CF00CDCB55 /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
+		EDB932FC241CF75200CDCB55 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		EDCAD908230F24940003278E /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		EDF45D8F23849D6D0080989C /* SharedIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedIdentifier.swift; sourceTree = "<group>"; };
 		F43680D9341D41CDDD5FADAE /* Pods-Video2Live.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Video2Live.release.xcconfig"; path = "Target Support Files/Pods-Video2Live/Pods-Video2Live.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,10 +141,12 @@
 				ED8F4240239D4499000744F7 /* Extra.swift */,
 				ED8F423E239D40D9000744F7 /* LivePhoto.swift */,
 				ED13791622F5EDE000CE9884 /* ViewController.swift */,
+				EDB932FC241CF75200CDCB55 /* Gradient.swift */,
 				ED8249BC23F1FE270098DE91 /* AdRequestViewController.swift */,
 				EDCAD908230F24940003278E /* PreviewViewController.swift */,
 				ED775DB923D79EBD002D2F03 /* InfoCollectionViewController.swift */,
 				EDAB4C0223D8F6C800BD7B54 /* InfoCollectionViewCell.swift */,
+				EDB932FA241CE1CF00CDCB55 /* Transition.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -284,10 +290,12 @@
 				ED8F423F239D40D9000744F7 /* LivePhoto.swift in Sources */,
 				EDF45D9023849D6D0080989C /* SharedIdentifier.swift in Sources */,
 				ED775DBA23D79EBD002D2F03 /* InfoCollectionViewController.swift in Sources */,
+				EDB932FB241CE1CF00CDCB55 /* Transition.swift in Sources */,
 				ED8249BD23F1FE270098DE91 /* AdRequestViewController.swift in Sources */,
 				ED13791D22F5EDE000CE9884 /* Video2Live.xcdatamodeld in Sources */,
 				ED8F4241239D4499000744F7 /* Extra.swift in Sources */,
 				EDCAD909230F24940003278E /* PreviewViewController.swift in Sources */,
+				EDB932FD241CF75200CDCB55 /* Gradient.swift in Sources */,
 				ED8F4245239D5DA4000744F7 /* AVAsset-extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +445,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = W3PJ8XX6PP;
 				INFOPLIST_FILE = "$(SRCROOT)/Video2Live/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -445,6 +454,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yomitosh.Video2Live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -460,6 +470,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = W3PJ8XX6PP;
 				INFOPLIST_FILE = "$(SRCROOT)/Video2Live/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -468,6 +479,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yomitosh.Video2Live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
