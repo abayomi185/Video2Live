@@ -33,6 +33,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     var secretCount = 0
     
+    var shapeLayer = CAShapeLayer()
+    var pulsatingLayer: CAShapeLayer!
+    
+    
 //    let circle = UIView()
 
 //    let gradientBG = CAGradientLayer()
@@ -123,26 +127,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.videoExportPreset = AVAssetExportPresetPassthrough
         imagePicker.allowsEditing = true
         
-//        circle.frame = CGRect(x: convertButton.center.x, y: convertButton.center.y, width: 100, height: 100)
-//        circle.layer.cornerRadius = circle.frame.size.height / 2
-//        circle.backgroundColor = convertButton.backgroundColor
+        //MARK: Animation
         
-        //setGradientBackground(colorTop: UIColor.darkGray.cgColor, colorBottom: UIColor(red: 0.27, green: 0.44, blue: 0.65, alpha: 1).cgColor)
+        //Track layer
+        let tracklayer = CAShapeLayer()
+        let center = view.center
+        let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi/2, endAngle: (2*CGFloat.pi - CGFloat.pi/2), clockwise: true)
+        tracklayer.path = circularPath.cgPath
         
+        tracklayer.strokeColor = UIColor.lightGray.cgColor
         
-        //Show view controller for terms and conditions. Modify permission to be called as a completion
+        tracklayer.lineWidth = 10
+        tracklayer.fillColor = nil
         
+        shapeLayer.path = circularPath.cgPath
+        shapeLayer.lineCap = .round
+        shapeLayer.strokeColor = UIColor.red.cgColor
+        shapeLayer.lineWidth = 10
+        shapeLayer.fillColor = nil
+        shapeLayer.strokeEnd = 0 //removes stroke, not entirely sure why
         
-        //MARK: Permission to access photo library
+        //view.layer.addSublayer(tracklayer)
+        //view.layer.addSublayer(shapeLayer)
         
-//        verifyAdStatus { (success) in
-//            if success {
-//                //Permissions function to be moved to convertButton
-//                //self.permissions()
-//            } else{
-//                print("Hmm, I think an error occured somewhere")
-//            }
-//        }
+        //view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handletap)))
         
         verifyAdStatus()
         
@@ -168,6 +176,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         
     }
+    
+    //Function for Animation
+    @objc func handletap() {
+        print("adding stroke")
+        
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        
+        basicAnimation.toValue = 1
+        basicAnimation.duration = 2
+        basicAnimation.fillMode = .forwards
+        basicAnimation.isRemovedOnCompletion = false
+        
+        shapeLayer.add(basicAnimation, forKey: "Anime")
+    }
+    
     
     func displayTerms(completion: (Bool)->Void) {
         if agreed == false {

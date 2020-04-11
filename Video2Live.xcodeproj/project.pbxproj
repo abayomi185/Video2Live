@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0331ABF7CB80C09B5F99EF82 /* Pods_Video2Live.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612A286165A11E3D2BFC4EB6 /* Pods_Video2Live.framework */; };
 		ED13791522F5EDE000CE9884 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED13791422F5EDE000CE9884 /* AppDelegate.swift */; };
 		ED13791722F5EDE000CE9884 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED13791622F5EDE000CE9884 /* ViewController.swift */; };
 		ED13791A22F5EDE000CE9884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED13791822F5EDE000CE9884 /* Main.storyboard */; };
@@ -23,6 +22,7 @@
 		EDAB4C0323D8F6C800BD7B54 /* InfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAB4C0223D8F6C800BD7B54 /* InfoCollectionViewCell.swift */; };
 		EDB932FB241CE1CF00CDCB55 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB932FA241CE1CF00CDCB55 /* Transition.swift */; };
 		EDB932FD241CF75200CDCB55 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB932FC241CF75200CDCB55 /* Gradient.swift */; };
+		EDC00962241EB6A0008465A4 /* Pods_Video2Live.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612A286165A11E3D2BFC4EB6 /* Pods_Video2Live.framework */; };
 		EDCAD909230F24940003278E /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCAD908230F24940003278E /* PreviewViewController.swift */; };
 		EDF45D9023849D6D0080989C /* SharedIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF45D8F23849D6D0080989C /* SharedIdentifier.swift */; };
 /* End PBXBuildFile section */
@@ -70,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0331ABF7CB80C09B5F99EF82 /* Pods_Video2Live.framework in Frameworks */,
+				EDC00962241EB6A0008465A4 /* Pods_Video2Live.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,7 +445,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = W3PJ8XX6PP;
 				INFOPLIST_FILE = "$(SRCROOT)/Video2Live/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -454,7 +454,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yomitosh.Video2Live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -470,7 +470,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = W3PJ8XX6PP;
 				INFOPLIST_FILE = "$(SRCROOT)/Video2Live/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -479,7 +479,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yomitosh.Video2Live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
