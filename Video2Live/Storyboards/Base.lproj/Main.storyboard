@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xTc-kb-1r1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xTc-kb-1r1">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,29 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SM3-a8-RlR">
+                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SM3-a8-RlR">
                                 <rect key="frame" x="133" y="511" width="108" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="convert">
                                     <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="convertButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YpL-Oi-XBn"/>
                                     <segue destination="m9L-yI-oda" kind="show" identifier="goToPreview" id="B9A-fa-1Zg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BM-bh-ECK">
-                                <rect key="frame" x="85" y="128" width="204" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="45"/>
-                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Video2Live">
-                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="liveConvertHiddenButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Na8-6i-0ze"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WM6-oZ-q9G">
@@ -51,7 +40,29 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
+                                    <action selector="infoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ax2-hf-K0a"/>
                                     <segue destination="WXU-8o-krH" kind="presentation" id="bb9-eI-ZlA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BM-bh-ECK">
+                                <rect key="frame" x="37" y="131" width="204" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="38"/>
+                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Video2Live">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="liveConvertHiddenButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Na8-6i-0ze"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pi7-aR-IYU">
+                                <rect key="frame" x="342" y="139" width="44" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="-1" minY="-1" maxX="-1" maxY="-1"/>
+                                <state key="normal" image="Star"/>
+                                <connections>
+                                    <action selector="starButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MWJ-n3-EYK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -63,12 +74,14 @@
                         <outlet property="convertButton" destination="SM3-a8-RlR" id="8Ss-i5-I59"/>
                         <outlet property="infoButton" destination="WM6-oZ-q9G" id="Qh9-94-WhD"/>
                         <outlet property="liveConvertHiddenButton" destination="0BM-bh-ECK" id="LLR-Lx-wQ1"/>
+                        <outlet property="starButton" destination="pi7-aR-IYU" id="G1J-Xk-uDQ"/>
                         <segue destination="5hv-2N-Iqe" kind="showDetail" identifier="termsAndCo" id="oFL-VC-qS8"/>
+                        <segue destination="Dn2-OR-40p" kind="presentation" id="D4b-gg-IO3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1980" y="135.22167487684729"/>
+            <point key="canvasLocation" x="1979.7101449275365" y="134.59821428571428"/>
         </scene>
         <!--Info Collection View Controller-->
         <scene sceneID="bme-zH-jT4">
@@ -131,7 +144,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAR-cw-mIr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2792.8000000000002" y="838.66995073891633"/>
+            <point key="canvasLocation" x="2794" y="950"/>
         </scene>
         <!--Ad Request-->
         <scene sceneID="C1J-Yt-HXN">
@@ -216,9 +229,7 @@ By clicking 'Agree and Continue', you are confirming that you have read and unde
                                 <rect key="frame" x="154" y="698.33333333333326" width="66" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <state key="normal" title="save">
-                                    <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <state key="normal" title="save"/>
                                 <connections>
                                     <action selector="saveButton:" destination="m9L-yI-oda" eventType="touchUpInside" id="Xro-Bk-g3r"/>
                                 </connections>
@@ -227,7 +238,9 @@ By clicking 'Agree and Continue', you are confirming that you have read and unde
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="eMn-uG-HHF"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9DO-ay-fAY"/>
+                    <navigationItem key="navigationItem" id="9DO-ay-fAY">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="info.circle" catalog="system" springLoaded="YES" style="plain" id="v9Y-CR-rAy"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="24j-Go-AkR" id="GxS-Wt-2jg"/>
                         <outlet property="livePhotoView" destination="0Bf-J0-Nrt" id="Bbw-EB-shr"/>
@@ -258,6 +271,27 @@ By clicking 'Agree and Continue', you are confirming that you have read and unde
             </objects>
             <point key="canvasLocation" x="1037.5999999999999" y="135.22167487684729"/>
         </scene>
+        <!--Bottom SheetVC-->
+        <scene sceneID="5hO-V1-YQY">
+            <objects>
+                <viewController id="Dn2-OR-40p" customClass="BottomSheetVC" customModule="Video2Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DDt-Ud-WGe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gt0-kC-Izm">
+                                <rect key="frame" x="183" y="59" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="lgG-0C-w0m"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="guB-9N-yJX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1132" y="950"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="FgX-6F-uQx">
             <objects>
@@ -274,7 +308,11 @@ By clicking 'Agree and Continue', you are confirming that you have read and unde
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8sW-UG-cW2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1980" y="838.66995073891633"/>
+            <point key="canvasLocation" x="1980" y="950"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Star" width="166.66667175292969" height="166.66667175292969"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+    </resources>
 </document>

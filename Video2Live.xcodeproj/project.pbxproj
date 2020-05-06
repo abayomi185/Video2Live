@@ -17,6 +17,7 @@
 		ED775DBA23D79EBD002D2F03 /* InfoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED775DB923D79EBD002D2F03 /* InfoCollectionViewController.swift */; };
 		ED8249BD23F1FE270098DE91 /* AdRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8249BC23F1FE270098DE91 /* AdRequestViewController.swift */; };
 		ED82F73723EEDB82003D6DCA /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ED8E237324618E87005BB680 /* AnimatedGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8E237224618E87005BB680 /* AnimatedGradient.swift */; };
 		ED8F423F239D40D9000744F7 /* LivePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F423E239D40D9000744F7 /* LivePhoto.swift */; };
 		ED8F4241239D4499000744F7 /* Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F4240239D4499000744F7 /* Extra.swift */; };
 		ED8F4245239D5DA4000744F7 /* AVAsset-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F4244239D5DA4000744F7 /* AVAsset-extensions.swift */; };
@@ -24,6 +25,9 @@
 		EDB932FB241CE1CF00CDCB55 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB932FA241CE1CF00CDCB55 /* Transition.swift */; };
 		EDB932FD241CF75200CDCB55 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB932FC241CF75200CDCB55 /* Gradient.swift */; };
 		EDCAD909230F24940003278E /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCAD908230F24940003278E /* PreviewViewController.swift */; };
+		EDE1E995246039A000FD72D8 /* BottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1E994246039A000FD72D8 /* BottomSheetVC.swift */; };
+		EDE1E9972460739F00FD72D8 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1E9962460739F00FD72D8 /* UIButtonExtensions.swift */; };
+		EDE1E99924607BAD00FD72D8 /* UIViewScaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1E99824607BAD00FD72D8 /* UIViewScaling.swift */; };
 		EDF45D9023849D6D0080989C /* SharedIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF45D8F23849D6D0080989C /* SharedIdentifier.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +58,7 @@
 		ED13792322F5EDE100CE9884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED775DB923D79EBD002D2F03 /* InfoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionViewController.swift; sourceTree = "<group>"; };
 		ED8249BC23F1FE270098DE91 /* AdRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdRequestViewController.swift; path = Video2Live/Controllers/AdRequestViewController.swift; sourceTree = SOURCE_ROOT; };
+		ED8E237224618E87005BB680 /* AnimatedGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedGradient.swift; sourceTree = "<group>"; };
 		ED8F423E239D40D9000744F7 /* LivePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivePhoto.swift; sourceTree = "<group>"; };
 		ED8F4240239D4499000744F7 /* Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extra.swift; sourceTree = "<group>"; };
 		ED8F4244239D5DA4000744F7 /* AVAsset-extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAsset-extensions.swift"; sourceTree = "<group>"; };
@@ -61,6 +66,9 @@
 		EDB932FA241CE1CF00CDCB55 /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		EDB932FC241CF75200CDCB55 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		EDCAD908230F24940003278E /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		EDE1E994246039A000FD72D8 /* BottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetVC.swift; sourceTree = "<group>"; };
+		EDE1E9962460739F00FD72D8 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
+		EDE1E99824607BAD00FD72D8 /* UIViewScaling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewScaling.swift; sourceTree = "<group>"; };
 		EDF45D8F23849D6D0080989C /* SharedIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedIdentifier.swift; sourceTree = "<group>"; };
 		F43680D9341D41CDDD5FADAE /* Pods-Video2Live.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Video2Live.release.xcconfig"; path = "Target Support Files/Pods-Video2Live/Pods-Video2Live.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +149,10 @@
 				ED8F4240239D4499000744F7 /* Extra.swift */,
 				ED8F423E239D40D9000744F7 /* LivePhoto.swift */,
 				ED13791622F5EDE000CE9884 /* ViewController.swift */,
+				ED8E237224618E87005BB680 /* AnimatedGradient.swift */,
+				EDE1E99824607BAD00FD72D8 /* UIViewScaling.swift */,
+				EDE1E9962460739F00FD72D8 /* UIButtonExtensions.swift */,
+				EDE1E994246039A000FD72D8 /* BottomSheetVC.swift */,
 				EDB932FC241CF75200CDCB55 /* Gradient.swift */,
 				ED8249BC23F1FE270098DE91 /* AdRequestViewController.swift */,
 				EDCAD908230F24940003278E /* PreviewViewController.swift */,
@@ -284,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDE1E9972460739F00FD72D8 /* UIButtonExtensions.swift in Sources */,
 				EDAB4C0323D8F6C800BD7B54 /* InfoCollectionViewCell.swift in Sources */,
 				ED13791722F5EDE000CE9884 /* ViewController.swift in Sources */,
 				ED13791522F5EDE000CE9884 /* AppDelegate.swift in Sources */,
@@ -291,10 +304,13 @@
 				EDF45D9023849D6D0080989C /* SharedIdentifier.swift in Sources */,
 				ED775DBA23D79EBD002D2F03 /* InfoCollectionViewController.swift in Sources */,
 				EDB932FB241CE1CF00CDCB55 /* Transition.swift in Sources */,
+				EDE1E99924607BAD00FD72D8 /* UIViewScaling.swift in Sources */,
 				ED8249BD23F1FE270098DE91 /* AdRequestViewController.swift in Sources */,
 				ED13791D22F5EDE000CE9884 /* Video2Live.xcdatamodeld in Sources */,
 				ED8F4241239D4499000744F7 /* Extra.swift in Sources */,
 				EDCAD909230F24940003278E /* PreviewViewController.swift in Sources */,
+				EDE1E995246039A000FD72D8 /* BottomSheetVC.swift in Sources */,
+				ED8E237324618E87005BB680 /* AnimatedGradient.swift in Sources */,
 				EDB932FD241CF75200CDCB55 /* Gradient.swift in Sources */,
 				ED8F4245239D5DA4000744F7 /* AVAsset-extensions.swift in Sources */,
 			);

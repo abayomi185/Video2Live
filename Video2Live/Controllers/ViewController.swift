@@ -12,6 +12,7 @@ import MobileCoreServices
 import Photos
 import GoogleMobileAds
 import CoreData
+import CoreHaptics
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -33,6 +34,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     var secretCount = 0
     
+    var gradientLayerStatus: Bool = false
+    
+    let gradient = CAGradientLayer()
+    var gradientSet = [[CGColor]]()
+    var currentGradient: Int = 0
+    
+    let gradientOne = UIColor(red: 48/255, green: 62/255, blue: 103/255, alpha: 1).cgColor
+    let gradientTwo = UIColor(red: 244/255, green: 88/255, blue: 53/255, alpha: 1).cgColor
+    let gradientThree = UIColor(red: 196/255, green: 70/255, blue: 107/255, alpha: 1).cgColor
+    
+    
 //    let circle = UIView()
 
 //    let gradientBG = CAGradientLayer()
@@ -41,7 +53,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func liveConvertHiddenButton(_ sender: Any) {
         
-        setGradientBackground(colorTop: UIColor.darkGray.cgColor, colorBottom: UIColor(red: 0.27, green: 0.44, blue: 0.65, alpha: 1).cgColor)
+        //setGradientBackground(colorTop: UIColor.darkGray.cgColor, colorBottom: UIColor(red: 0.27, green: 0.44, blue: 0.65, alpha: 1).cgColor)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             if self.secretCount == 0 {
@@ -58,11 +70,63 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    @IBOutlet weak var starButton: UIButton!
+    
+    @IBAction func starButton(_ sender: UIButton) {
+        
+        springyButton(sender)
+        
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.impactOccurred()
+        
+        let textView = UITextView()
+        let alert = UIAlertController(title: "Put information here", message: "Do you wish to save this Demo Settings?", preferredStyle: .alert)
+        
+        //UIAlert Actions
+        let redeemAction = UIAlertAction(title: "Redeem Code", style: UIAlertAction.Style.default, handler: {
+            (_)in
+            //SAVE DEMO DATA HERE
+            let alert2 = UIAlertController(title: "Saving Demo.", message: "Do you wish to save this Demo Settings?", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {
+                (_)in
+                //SAVE DEMO DATA HERE
+                
+            })
+            alert2.addAction(OKAction)
+            alert2.show()
+        })
+        
+        let purchaseAction = UIAlertAction(title: "Remove Ads", style: UIAlertAction.Style.default, handler: {
+            (_)in
+            //do something
+        })
+        let restoreAction = UIAlertAction(title: "Restore Purchase", style: UIAlertAction.Style.default, handler: {
+            (_)in
+            //do something
+        })
+        let cancelAction = UIAlertAction(title: "3rd Btn", style: UIAlertAction.Style.cancel, handler: {
+            (_)in
+            //do another thing
+        })
+        alert.addAction(redeemAction)
+        alert.addAction(purchaseAction)
+        alert.addAction(restoreAction)
+        alert.addAction(cancelAction)
+        alert.show()
+        
+    }
+    
+    
     
     @IBOutlet weak var convertButton: UIButton!
     
     //MARK: Convert Button and UIAlert
     @IBAction func convertButton(_ sender: UIButton) {
+        
+        //sender.pulsate()
+        springyButton(sender)
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.impactOccurred()
         
         verifyPermissions { (success) in
             if success {
@@ -72,7 +136,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    
+    private func springyButton(_ viewToAnimate:UIView){
+        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.1, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
+            
+            viewToAnimate.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            
+        }) { (_) in
+            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: .curveEaseIn, animations: {
+                
+                viewToAnimate.transform = CGAffineTransform(scaleX: 1, y: 1)
+                
+            }, completion:  nil)
+        }
+    }
+    
+    
     func convertButtonFunction() {
+        
         let actionSheet = UIAlertController.init(title: "Video Source", message: "Choose a Video", preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default)
@@ -95,25 +176,61 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    func animatedGradientBackground() {
+        let gradient = CAGradientLayer()
+        gradient.frame = self.view.bounds
+        gradient.colors = [
+            UIColor(red: 48/255, green: 62/255, blue: 103/255, alpha: 1).cgColor,
+            UIColor(red: 244/255, green: 88/255, blue: 53/255, alpha: 1).cgColor
+        ]
+        gradient.startPoint = CGPoint(x:0, y:0)
+        gradient.endPoint = CGPoint(x:1, y:1)
+        self.view.layer.addSublayer(gradient)
+    }
+    
+    
     @IBOutlet weak var infoButton: UIButton!
     
+    @IBAction func infoButton(_ sender: UIButton) {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+    }
     
+    func addBottomSheetView() {
+        // 1- Init bottomSheetVC
+        let bottomSheetVC = BottomSheetVC()
+        
+        // 2- Add bottomSheetVC as a child view
+        self.addChild(bottomSheetVC)
+        self.view.addSubview(bottomSheetVC.view)
+        bottomSheetVC.didMove(toParent: self)
+        
+        // 3- Adjust bottomSheet frame and initial position.
+        let height = view.frame.height
+        let width  = view.frame.width
+        bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
+    }
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        liveConvertHiddenButton.frame = CGRect(x: ((screenSize.width/2)-(272/2)), y: (screenSize.height*0.16), width: 272, height: 48)
+        liveConvertHiddenButton.frame = CGRect(x: (screenSize.width * -0.02), y: (screenSize.height*0.13), width: 272, height: 48)
         liveConvertHiddenButton.setTitleColor(UIColor.red, for: .highlighted)
+        //liveConvertHiddenButton.layer.backgroundColor = UIColor(red: 0/255, green: 159/255, blue: 184/255, alpha: 1.0).cgColor
+        
+        starButton.frame = CGRect(x: (screenSize.width * 0.8), y: (screenSize.height*0.136), width: 37, height: 37)
         
         convertButton.frame = CGRect(x: ((screenSize.width/2)-(180/2)), y: (screenSize.height*0.58), width: 180, height: 54)
         //convertButton.setTitleColor(UIColor.white, for: .normal)
-        convertButton.setTitleColor(UIColor.systemOrange, for: .highlighted)
+        //convertButton.setTitleColor(UIColor.systemOrange, for: .highlighted)
         convertButton.backgroundColor = UIColor.systemOrange
         convertButton.layer.cornerRadius = 25
         
         infoButton.frame = CGRect(x: ((screenSize.width/2)-(195/2)), y: (screenSize.height*0.80), width: 195, height: 33)
         infoButton.backgroundColor = UIColor.systemTeal
-        infoButton.setTitleColor(UIColor.systemOrange, for: .highlighted)
+        //infoButton.setTitleColor(UIColor.systemOrange, for: .highlighted)
         infoButton.layer.cornerRadius = 15
         
         imagePicker.delegate = self
@@ -123,6 +240,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.videoExportPreset = AVAssetExportPresetPassthrough
         imagePicker.allowsEditing = true
         
+        gradientSet.append([gradientOne, gradientTwo])
+        gradientSet.append([gradientTwo, gradientThree])
+        gradientSet.append([gradientThree, gradientOne])
+        
+        
+        gradient.frame = self.view.bounds
+        gradient.colors = gradientSet[currentGradient]
+        gradient.startPoint = CGPoint(x:0, y:0)
+        gradient.endPoint = CGPoint(x:1, y:1)
+        gradient.drawsAsynchronously = true
+        
 //        circle.frame = CGRect(x: convertButton.center.x, y: convertButton.center.y, width: 100, height: 100)
 //        circle.layer.cornerRadius = circle.frame.size.height / 2
 //        circle.backgroundColor = convertButton.backgroundColor
@@ -130,19 +258,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //setGradientBackground(colorTop: UIColor.darkGray.cgColor, colorBottom: UIColor(red: 0.27, green: 0.44, blue: 0.65, alpha: 1).cgColor)
         
         
-        //Show view controller for terms and conditions. Modify permission to be called as a completion
+        runAds()
         
-        
-        //MARK: Permission to access photo library
-        
-//        verifyAdStatus { (success) in
-//            if success {
-//                //Permissions function to be moved to convertButton
-//                //self.permissions()
-//            } else{
-//                print("Hmm, I think an error occured somewhere")
-//            }
-//        }
+    }
+    
+    func runAds() {
         
         verifyAdStatus()
         
@@ -159,15 +279,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
-
+        
         bannerView.adUnitID = "ca-app-pub-1890050047502812/9448178019"
         bannerView.rootViewController = self
-
-
+        
+        
         bannerView.load(GADRequest())
         
-        
     }
+    
     
     func displayTerms(completion: (Bool)->Void) {
         if agreed == false {
@@ -270,6 +390,50 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
+        if traitCollection.userInterfaceStyle == .dark {
+            self.view.layer.insertSublayer(gradient, at: 0)
+            animateGradient()
+            gradientLayerStatus = true
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //addBottomSheetView()
+        starButton.flash()
+        
+        
+        
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+      // Do something
+        
+        if traitCollection.userInterfaceStyle == .light {
+            if gradientLayerStatus == true {
+                gradient.removeFromSuperlayer()
+            }
+        } else {
+            self.view.layer.insertSublayer(gradient, at: 0)
+            animateGradient()
+            gradientLayerStatus = true
+        }
+    }
+    
+    
+    func animateGradient() {
+        if currentGradient < gradientSet.count - 1 {
+            currentGradient += 1
+        } else {
+            currentGradient = 0
+        }
+        
+        let gradientChangeAnimation = CABasicAnimation(keyPath: "colors")
+        gradientChangeAnimation.duration = 10.0
+        gradientChangeAnimation.toValue = gradientSet[currentGradient]
+        gradientChangeAnimation.fillMode = CAMediaTimingFillMode.forwards
+        gradientChangeAnimation.isRemovedOnCompletion = false
+        gradient.add(gradientChangeAnimation, forKey: "colorChange")
     }
     
     

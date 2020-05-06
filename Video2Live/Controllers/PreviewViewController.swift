@@ -39,6 +39,8 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
     
     var videoURL: URL?
     
+    var alertDecision : Int = 0
+    
     //pretty sure this is unused
     //var completion: Bool?
     
@@ -50,8 +52,8 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        saveButton.frame = CGRect(x: (screenSize.width/2)-(90/2), y: (screenSize.height*0.86), width: 90, height: 37)
-        saveButton.backgroundColor = UIColor.systemTeal
+        saveButton.frame = CGRect(x: (screenSize.width/2)-(90/2), y: (screenSize.height*0.86), width: 95, height: 40)
+        saveButton.backgroundColor = UIColor.systemOrange
         saveButton.layer.cornerRadius = 18
         activityIndicator.frame = CGRect(x: (screenSize.width/2)-(150/2), y: (screenSize.height/2), width: 150, height: 3)
         livePhotoView.frame = CGRect(x: (screenSize.width/2)-(343/2), y: (screenSize.height*0.108), width: (screenSize.width*0.91), height: (screenSize.height*0.68))
@@ -92,12 +94,26 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
         
         livePhotoView.frame = CGRect(x: 0, y: topbarHeight, width: screenSize.width, height: screenSize.height * 0.72)
         
+        alertAfterAd()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         livePhotoViewStop(livePhotoView)
     }
     
+    private func springyButton(_ viewToAnimate:UIView){
+        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.1, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
+            
+            viewToAnimate.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            
+        }) { (_) in
+            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: .curveEaseIn, animations: {
+                
+                viewToAnimate.transform = CGAffineTransform(scaleX: 1, y: 1)
+                
+            }, completion:  nil)
+        }
+    }
     
     func loadInterstitial(completion: (Bool)->Void){
         if interstitialAd.isReady {
@@ -132,6 +148,11 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
     
     @IBAction func saveButton(_ sender: UIButton) {
         
+        springyButton(sender)
+        
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.impactOccurred()
+        
         loadInterstitial { (success) in
             if success && interstitialAd.isReady {
                     self.saveAsLive(2)
@@ -139,7 +160,6 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
                 self.saveAsLive(1)
             }
         }
-        
         
         //saveAsLive(1)
         //To determine whether alert should should. I intend to use the live photo generated to preview as live photo. I would probably also need a progres bar for this process.
@@ -154,6 +174,8 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
     func saveAsLive(_ choice:Int) {
         
         saveButton.isEnabled = false
+        
+        alertDecision = 0
         
         if #available(iOS 13.0, *) {
             activityIndicator.startAnimating()
@@ -220,20 +242,8 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
                                             self.activityIndicator.stopAnimating()
                                             self.activityIndicator.isHidden = true
                                         }
-                                        
-                                        //show alert
-                                        let alertController = UIAlertController(title: "Live Photo Saved!", message: "The live photo was successfully saved to Photos.", preferredStyle: .alert)
-                                        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
-                                            self.saveButton.isEnabled = false
-                                            self.navigationController?.popViewController(animated: true)
-                                        }))
-        //                                alertController.addAction(UIAlertAction(title: "Open Photos", style: .cancel, handler: { (UIAlertAction) in
-        //                                        UIApplication.shared.open(URL(string:"photos-redirect://")!)
-        //                                }))
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
-                                            alertController.show()
-                                        }
                                     }
+                                    self.alertDecision = 1
                                     print("success")
                                 }
                                 else {
@@ -283,6 +293,21 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
     func popVC(alertAction: UIAlertAction){
         navigationController?.popViewController(animated: true)
     }
+    
+    func alertAfterAd() {
+        if alertDecision == 1 {
+            let alertController = UIAlertController(title: "Live Photo Saved!", message: "The live photo was successfully saved to Photos.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
+                self.saveButton.isEnabled = false
+                self.navigationController?.popViewController(animated: true)
+            }))
+            //            alertController.addAction(UIAlertAction(title: "Open Photos", style: .cancel, handler: { (UIAlertAction) in
+            //            UIApplication.shared.open(URL(string:"photos-redirect://")!)
+            //        }))
+            alertController.show()
+        }
+    }
+    
     
 }
 
