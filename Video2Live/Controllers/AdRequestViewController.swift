@@ -23,6 +23,11 @@ class AdRequest: UIViewController {
     
     @IBAction func agreeButtonAction(_ sender: UIButton) {
         
+//        let mainvc = ViewController()
+        
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        
         //Change value of variable in CoreData here to true and dismiss view controller
         
         //Setting up entites and getting app ready to store into CoreData

@@ -14,7 +14,7 @@ class InfoCollectionViewController: UICollectionViewController, UICollectionView
     
     let reuseIdentifier = "socialCell"
     
-    var socialMedia = ["YomiTosh", "@yomi185 "]
+    var socialMedia = ["YomiTosh", "@yomi185"]
     
     var logoImages: [UIImage] = [UIImage(named: "youtube.png")!, UIImage(named: "twitter.png")!]
     
@@ -76,6 +76,7 @@ class InfoCollectionViewController: UICollectionViewController, UICollectionView
         
 //        cell.infoImage.image = socialMediaLogo
 //        cell.infoLabel.text = socialMediaUsername
+        cell.infoLabelButton.frame = CGRect(x: 0, y: 130, width: 120, height: 35)
         cell.infoLabelButton.setTitle(socialMediaUsername, for: .normal)
         cell.infoLabelButton.setTitleColor(UIColor.systemBlue, for: .normal)
         
@@ -83,6 +84,7 @@ class InfoCollectionViewController: UICollectionViewController, UICollectionView
 //        cell.infoLabel.isHidden = true
         //Disabled UIImageView until further notice
         
+        cell.infoButton.frame = CGRect(x: 0, y: 0, width: 120, height: 100)
         cell.infoButton.setImage(socialMediaLogo, for: .normal)
         cell.infoButton.imageView?.contentMode = .scaleAspectFit
         

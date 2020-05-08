@@ -19,6 +19,7 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
     //var live = LivePhoto()
     
     var previewURL: URL?
+    var purchaseCheckReceiver: Bool?
     var urlDuplicate: URL?
     let screenSize: CGRect = UIScreen.main.bounds
 
@@ -136,6 +137,18 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
     }
     
     
+    @IBAction func infoButton(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Did you know?", message: "You can preview the Live Photo with 3D Touch or Haptic Touch before saving it", preferredStyle: UIAlertController.Style.alert)
+        self.present(alert, animated: true, completion:{
+           alert.view.superview?.isUserInteractionEnabled = true
+           alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.dismissOnTapOutside)))
+        })
+    }
+    
+    @objc func dismissOnTapOutside(){
+       self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var progressView: UIProgressView!
@@ -153,13 +166,18 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
         let generator = UIImpactFeedbackGenerator(style: .heavy)
         generator.impactOccurred()
         
-        loadInterstitial { (success) in
-            if success && interstitialAd.isReady {
+        if purchaseCheckReceiver == false {
+            loadInterstitial { (success) in
+                if success && interstitialAd.isReady {
                     self.saveAsLive(2)
-            } else if success {
-                self.saveAsLive(1)
+                } else if success {
+                    self.saveAsLive(1)
+                }
             }
+        } else {
+            self.saveAsLive(1)
         }
+        
         
         //saveAsLive(1)
         //To determine whether alert should should. I intend to use the live photo generated to preview as live photo. I would probably also need a progres bar for this process.
@@ -206,17 +224,8 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
                                     self.activityIndicator.stopAnimating()
                                     self.activityIndicator.isHidden = true
                                 }
-                                
-                                //show alert
-                                let alertController = UIAlertController(title: "Live Photo Saved!", message: "The live photo was successfully saved to Photos.", preferredStyle: .alert)
-                                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
-                                    self.saveButton.isEnabled = false
-                                    self.navigationController?.popViewController(animated: true)
-                                }))
-//                                alertController.addAction(UIAlertAction(title: "Open Photos", style: .cancel, handler: { (UIAlertAction) in
-//                                        UIApplication.shared.open(URL(string:"photos-redirect://")!)
-//                                }))
-                                alertController.show()
+                                self.alertDecision = 1
+                                self.alertAfterAd()
                             }
                             print("success")
                         }
@@ -296,15 +305,19 @@ class PreviewViewController: UIViewController, PHLivePhotoViewDelegate {
     
     func alertAfterAd() {
         if alertDecision == 1 {
-            let alertController = UIAlertController(title: "Live Photo Saved!", message: "The live photo was successfully saved to Photos.", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
+            let alert = UIAlertController(title: "Live Photo Saved!", message: "The live photo was successfully saved to Photos.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (_) in
                 self.saveButton.isEnabled = false
                 self.navigationController?.popViewController(animated: true)
-            }))
-            //            alertController.addAction(UIAlertAction(title: "Open Photos", style: .cancel, handler: { (UIAlertAction) in
-            //            UIApplication.shared.open(URL(string:"photos-redirect://")!)
-            //        }))
-            alertController.show()
+            })
+            let openAction = UIAlertAction(title: "Open Photos", style: .default, handler: { (_) in
+                UIApplication.shared.open(URL(string:"photos-redirect://")!)
+                self.navigationController?.popViewController(animated: true)
+            })
+            alert.addAction(okAction)
+            alert.addAction(openAction)
+            alert.preferredAction = openAction
+            alert.show()
         }
     }
     

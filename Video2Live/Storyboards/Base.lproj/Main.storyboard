@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xTc-kb-1r1">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,7 +13,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Video2Live" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SM3-a8-RlR">
@@ -22,7 +21,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="7" maxX="10" maxY="10"/>
                                 <state key="normal" title="convert">
                                     <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -41,7 +40,6 @@
                                 </state>
                                 <connections>
                                     <action selector="infoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ax2-hf-K0a"/>
-                                    <segue destination="WXU-8o-krH" kind="presentation" id="bb9-eI-ZlA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BM-bh-ECK">
@@ -56,8 +54,24 @@
                                     <action selector="liveConvertHiddenButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Na8-6i-0ze"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mp8-W3-j9a">
+                                <rect key="frame" x="217" y="578" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="twitter"/>
+                                <connections>
+                                    <action selector="twitterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aGj-0x-gqY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGM-6q-21e">
+                                <rect key="frame" x="100" y="583" width="73" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="youtube"/>
+                                <connections>
+                                    <action selector="youtubeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZWz-Nd-kIE"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pi7-aR-IYU">
-                                <rect key="frame" x="342" y="139" width="44" height="44"/>
+                                <rect key="frame" x="286" y="139" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="-1" minY="-1" maxX="-1" maxY="-1"/>
                                 <state key="normal" image="Star"/>
@@ -65,6 +79,11 @@
                                     <action selector="starButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MWJ-n3-EYK"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="YDv-8D-WLF">
+                                <rect key="frame" x="164" y="373" width="46" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -74,84 +93,23 @@
                         <outlet property="convertButton" destination="SM3-a8-RlR" id="8Ss-i5-I59"/>
                         <outlet property="infoButton" destination="WM6-oZ-q9G" id="Qh9-94-WhD"/>
                         <outlet property="liveConvertHiddenButton" destination="0BM-bh-ECK" id="LLR-Lx-wQ1"/>
+                        <outlet property="loadingIndicator" destination="YDv-8D-WLF" id="nf3-GC-mLe"/>
                         <outlet property="starButton" destination="pi7-aR-IYU" id="G1J-Xk-uDQ"/>
+                        <outlet property="twitterButton" destination="Mp8-W3-j9a" id="y7D-UW-rGU"/>
+                        <outlet property="youtubeButton" destination="EGM-6q-21e" id="6Kv-V4-BzT"/>
                         <segue destination="5hv-2N-Iqe" kind="showDetail" identifier="termsAndCo" id="oFL-VC-qS8"/>
-                        <segue destination="Dn2-OR-40p" kind="presentation" id="D4b-gg-IO3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1979.7101449275365" y="134.59821428571428"/>
-        </scene>
-        <!--Info Collection View Controller-->
-        <scene sceneID="bme-zH-jT4">
-            <objects>
-                <collectionViewController id="vmu-cO-6ps" customClass="InfoCollectionViewController" customModule="Video2Live" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="YKy-8w-bWd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="20" id="YlT-sA-OQY">
-                            <size key="itemSize" width="185" height="185"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="5" minY="10" maxX="5" maxY="10"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="socialCell" id="dM8-so-c90" customClass="InfoCollectionViewCell" customModule="Video2Live" customModuleProvider="target">
-                                <rect key="frame" x="5" y="10" width="185" height="185"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pKi-SK-i5h">
-                                    <rect key="frame" x="0.0" y="0.0" width="185" height="185"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmW-ve-JfK">
-                                            <rect key="frame" x="0.0" y="0.0" width="185" height="150"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <connections>
-                                                <action selector="infoButtonAction:" destination="dM8-so-c90" eventType="touchUpInside" id="d3d-Eg-c2l"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeX-26-Qdu">
-                                            <rect key="frame" x="0.0" y="149" width="185" height="36"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <connections>
-                                                <action selector="infoButtonAction:" destination="dM8-so-c90" eventType="touchUpInside" id="pL7-de-MGD"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                </collectionViewCellContentView>
-                                <size key="customSize" width="185" height="185"/>
-                                <connections>
-                                    <outlet property="infoButton" destination="nmW-ve-JfK" id="nTh-sA-IJg"/>
-                                    <outlet property="infoLabelButton" destination="ZeX-26-Qdu" id="OVy-6X-Yw0"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="vmu-cO-6ps" id="psv-1m-Oed"/>
-                            <outlet property="delegate" destination="vmu-cO-6ps" id="2by-zq-iKK"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="lrf-16-Tt3">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="nwv-Cz-nMl">
-                            <connections>
-                                <action selector="cancelButton:" destination="vmu-cO-6ps" id="XbT-cr-qDm"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <nil key="simulatedBottomBarMetrics"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bAR-cw-mIr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2794" y="950"/>
+            <point key="canvasLocation" x="1978.4000000000001" y="134.48275862068965"/>
         </scene>
         <!--Ad Request-->
         <scene sceneID="C1J-Yt-HXN">
             <objects>
                 <viewController id="5hv-2N-Iqe" customClass="AdRequest" customModule="Video2Live" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bTA-Rx-ygM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9o7-nJ-CFt">
@@ -183,7 +141,7 @@ By clicking 'Agree and Continue', you are confirming that you have read and unde
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4t9-gD-MB9">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Terms" id="18r-Rn-nkx"/>
@@ -201,14 +159,14 @@ By clicking 'Agree and Continue', you are confirming that you have read and unde
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVp-j4-7Ok" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2792.753623188406" y="-561.16071428571422"/>
+            <point key="canvasLocation" x="2793" y="-206"/>
         </scene>
         <!--Preview View Controller-->
         <scene sceneID="DE5-dr-lJH">
             <objects>
                 <viewController id="m9L-yI-oda" customClass="PreviewViewController" customModule="Video2Live" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d6J-kc-miN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Lqn-i9-N2O">
@@ -225,10 +183,11 @@ By clicking 'Agree and Continue', you are confirming that you have read and unde
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2r-CH-r9n">
-                                <rect key="frame" x="154" y="698.33333333333326" width="66" height="48"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2r-CH-r9n">
+                                <rect key="frame" x="154" y="698" width="66" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="-4" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="save"/>
                                 <connections>
                                     <action selector="saveButton:" destination="m9L-yI-oda" eventType="touchUpInside" id="Xro-Bk-g3r"/>
@@ -239,7 +198,11 @@ By clicking 'Agree and Continue', you are confirming that you have read and unde
                         <viewLayoutGuide key="safeArea" id="eMn-uG-HHF"/>
                     </view>
                     <navigationItem key="navigationItem" id="9DO-ay-fAY">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="info.circle" catalog="system" springLoaded="YES" style="plain" id="v9Y-CR-rAy"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="info.circle" catalog="system" springLoaded="YES" style="plain" id="v9Y-CR-rAy">
+                            <connections>
+                                <action selector="infoButton:" destination="m9L-yI-oda" id="VkP-f4-Old"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="24j-Go-AkR" id="GxS-Wt-2jg"/>
@@ -250,7 +213,7 @@ By clicking 'Agree and Continue', you are confirming that you have read and unde
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D7R-c5-ar4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2794.4000000000001" y="133.00492610837438"/>
+            <point key="canvasLocation" x="2792.8000000000002" y="469.95073891625617"/>
         </scene>
         <!--FirstVC-->
         <scene sceneID="byO-ab-49u">
@@ -259,7 +222,7 @@ By clicking 'Agree and Continue', you are confirming that you have read and unde
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="nZc-o6-EBp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LEv-RX-z6t">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -269,50 +232,13 @@ By clicking 'Agree and Continue', you are confirming that you have read and unde
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHM-M6-MuV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1037.5999999999999" y="135.22167487684729"/>
-        </scene>
-        <!--Bottom SheetVC-->
-        <scene sceneID="5hO-V1-YQY">
-            <objects>
-                <viewController id="Dn2-OR-40p" customClass="BottomSheetVC" customModule="Video2Live" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DDt-Ud-WGe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gt0-kC-Izm">
-                                <rect key="frame" x="183" y="59" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="lgG-0C-w0m"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="guB-9N-yJX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1132" y="950"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="FgX-6F-uQx">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WXU-8o-krH" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yfd-Gf-H29">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="vmu-cO-6ps" kind="relationship" relationship="rootViewController" id="63G-8c-e4X"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8sW-UG-cW2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1980" y="950"/>
+            <point key="canvasLocation" x="1146" y="135"/>
         </scene>
     </scenes>
     <resources>
         <image name="Star" width="166.66667175292969" height="166.66667175292969"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="twitter" width="133.33332824707031" height="133.33332824707031"/>
+        <image name="youtube" width="734" height="518"/>
     </resources>
 </document>

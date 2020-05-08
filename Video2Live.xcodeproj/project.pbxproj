@@ -25,6 +25,8 @@
 		EDB932FB241CE1CF00CDCB55 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB932FA241CE1CF00CDCB55 /* Transition.swift */; };
 		EDB932FD241CF75200CDCB55 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB932FC241CF75200CDCB55 /* Gradient.swift */; };
 		EDCAD909230F24940003278E /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCAD908230F24940003278E /* PreviewViewController.swift */; };
+		EDCD782D246421AB00B5AD47 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCD782C246421AB00B5AD47 /* StoreKit.framework */; };
+		EDCD78382465958600B5AD47 /* AppVideo.mov in Resources */ = {isa = PBXBuildFile; fileRef = EDCD78372465958500B5AD47 /* AppVideo.mov */; };
 		EDE1E995246039A000FD72D8 /* BottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1E994246039A000FD72D8 /* BottomSheetVC.swift */; };
 		EDE1E9972460739F00FD72D8 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1E9962460739F00FD72D8 /* UIButtonExtensions.swift */; };
 		EDE1E99924607BAD00FD72D8 /* UIViewScaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1E99824607BAD00FD72D8 /* UIViewScaling.swift */; };
@@ -66,6 +68,8 @@
 		EDB932FA241CE1CF00CDCB55 /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		EDB932FC241CF75200CDCB55 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		EDCAD908230F24940003278E /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		EDCD782C246421AB00B5AD47 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		EDCD78372465958500B5AD47 /* AppVideo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = AppVideo.mov; sourceTree = "<group>"; };
 		EDE1E994246039A000FD72D8 /* BottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetVC.swift; sourceTree = "<group>"; };
 		EDE1E9962460739F00FD72D8 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		EDE1E99824607BAD00FD72D8 /* UIViewScaling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewScaling.swift; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0331ABF7CB80C09B5F99EF82 /* Pods_Video2Live.framework in Frameworks */,
+				EDCD782D246421AB00B5AD47 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +93,7 @@
 		452A7F234191105F3AAC9A5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EDCD782C246421AB00B5AD47 /* StoreKit.framework */,
 				612A286165A11E3D2BFC4EB6 /* Pods_Video2Live.framework */,
 			);
 			name = Frameworks;
@@ -127,6 +133,7 @@
 				ED13791422F5EDE000CE9884 /* AppDelegate.swift */,
 				ED8F4243239D5B15000744F7 /* Storyboards */,
 				ED8F4242239D5ADB000744F7 /* Controllers */,
+				EDCD78322464C85600B5AD47 /* Video */,
 				ED8F4246239D5DB1000744F7 /* Extension */,
 				ED13791E22F5EDE100CE9884 /* Assets.xcassets */,
 				EDF45D8F23849D6D0080989C /* SharedIdentifier.swift */,
@@ -178,6 +185,14 @@
 				ED8F4244239D5DA4000744F7 /* AVAsset-extensions.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		EDCD78322464C85600B5AD47 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				EDCD78372465958500B5AD47 /* AppVideo.mov */,
+			);
+			path = Video;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDCD78382465958600B5AD47 /* AppVideo.mov in Resources */,
 				ED13792222F5EDE100CE9884 /* LaunchScreen.storyboard in Resources */,
 				ED13791F22F5EDE100CE9884 /* Assets.xcassets in Resources */,
 				ED13791A22F5EDE000CE9884 /* Main.storyboard in Resources */,

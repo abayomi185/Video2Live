@@ -21,13 +21,15 @@ class InfoCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews()
+        //setupViews()
         
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    
     
 //    required init?(coder: NSCoder) {
 //        fatalError("init(coder:) has not been implemented")
@@ -40,6 +42,7 @@ class InfoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var infoButton: UIButton!
     @IBAction func infoButtonAction(_ sender: UIButton) {
+        
         link = socialDelegate?.didPressButton(sender.tag)
         //socialDelegate?.socialLink()
         
@@ -54,9 +57,9 @@ class InfoCollectionViewCell: UICollectionViewCell {
 
     func setupViews() {
 //        infoImage.frame = CGRect(x: 0, y: 0, width: 185, height: 150)
-        infoButton.frame = CGRect(x: 0, y: 0, width: 185, height: 150)
+        infoButton.frame = CGRect(x: 0, y: 0, width: 120, height: 100)
 //        infoLabel.frame = CGRect(x: 0, y: 150, width: 185, height: 35)
-        infoLabelButton.frame = CGRect(x: 0, y: 150, width: 185, height: 35)
+        infoLabelButton.frame = CGRect(x: 0, y: 130, width: 120, height: 35)
         
     }
     
